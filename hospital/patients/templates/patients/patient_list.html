@@ -3,12 +3,33 @@
 {% block content %}
 <h2>Patients</h2>
 <a href="{% url 'patient_create' %}">Add New Patient</a>
-<ul>
-    {% for patient in patients %}
-    <li>{{ patient.Patient_ID }} - {{ patient.name }} - {{ patient.age }} - {{ patient.gender }} - {{ patient.phone }}
-        <a href="{% url 'patient_update' patient.pk %}">Edit</a> |
-        <a href="{% url 'patient_delete' patient.pk %}">Delete</a>
-    </li>
-    {% endfor %}
-</ul>
+<table>
+    <thead>
+        <tr>
+            <th>Patient ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Phone</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for patient in patients %}
+        <tr>
+            <td>{{ patient.Patient_ID }}</td>
+            <td>{{ patient.name }}</td>
+            <td>{{ patient.age }}</td>
+            <td>{{ patient.gender }}</td>
+            <td>{{ patient.phone }}</td>
+            <td>
+                <a href="{% url 'patient_update' patient.pk %}">Edit</a> |
+                <a href="{% url 'patient_delete' patient.pk %}">Delete</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="6">No patients found.</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
 {% endblock %}
