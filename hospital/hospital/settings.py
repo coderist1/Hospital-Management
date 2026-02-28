@@ -76,8 +76,16 @@ WSGI_APPLICATION = 'hospital.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        # replace the following values with your actual PostgreSQL
+        # connection information.  Typically you would create a
+        # database and user in Postgres first (e.g. using pgAdmin,
+        # psql, or another client).
+        'NAME': 'hospital_management',  # the name of your Postgres database
+        'USER': 'postgres',          # your Postgres username
+        'PASSWORD': 'admin',         # your Postgres password
+        'HOST': 'localhost',         # host where Postgres is running
+        'PORT': '5432',              # default Postgres port
     }
 }
 
